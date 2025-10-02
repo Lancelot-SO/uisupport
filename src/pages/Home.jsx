@@ -14,7 +14,8 @@ import HomeResource from '../components/homesection/HomeResource';
 
 const Home = () => {
     return (
-        <div><Hero />
+        <div>
+            <Hero />
             <HomeAbout slides={[{ src: img1 }, { src: img2 }, { src: img3 }, { src: img4 }]} />
             <Partners />
             <HomeServices />

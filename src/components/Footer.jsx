@@ -207,7 +207,7 @@ export default function Footer() {
             </section>
 
             {/* ========================= BOTTOM BAR ========================= */}
-            <div className="w-full bg-[#B68C4A] text-[#0B2F25]">
+            <div className="w-full bg-[#B68C4A] text-white">
                 <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-3 text-xs sm:flex-row">
                     <p className="opacity-90">
                         Copyright © {new Date().getFullYear()} Artfrica Studios.
