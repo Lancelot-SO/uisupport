@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Mail, Phone, Facebook, Instagram, Linkedin, Menu, X } from "lucide-react";
-import logo from "../assets/logo.png"
-
+import { NavLink } from "react-router-dom";
+import logo from "../assets/logo1.png";
 
 const NAV_ITEMS = [
     { label: "Home", href: "/" },
@@ -15,7 +15,22 @@ const NAV_ITEMS = [
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const activeIdx = 0; // set your active index dynamically if needed
+    const [scrolledHalf, setScrolledHalf] = useState(false);
+
+    // Change hamburger/X icon color after 30% scroll progress (your code)
+    useEffect(() => {
+        const onScroll = () => {
+            const doc = document.documentElement;
+            const maxScroll = doc.scrollHeight - window.innerHeight;
+            const progress = maxScroll > 0 ? (window.scrollY || doc.scrollTop) / maxScroll : 0;
+            setScrolledHalf(progress >= 0.3);
+        };
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    const iconClass = `h-6 w-6 ${scrolledHalf ? "text-emerald-900" : "text-white"}`;
 
     return (
         <div className="fixed inset-x-0 top-0 z-50">
@@ -51,13 +66,13 @@ const Navbar = () => {
             <nav className="relative">
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 pt-4 pb-3">
                     {/* Logo */}
-                    <a href="/" className="flex items-center gap-2">
+                    <NavLink to="/" className="flex items-center gap-2">
                         <img
                             src={logo}
                             alt="Ultimate Integrated Support"
                             className="h-[78px] w-[80px]"
                         />
-                    </a>
+                    </NavLink>
 
                     {/* Mobile menu button */}
                     <button
@@ -65,7 +80,7 @@ const Navbar = () => {
                         aria-label="Toggle menu"
                         onClick={() => setOpen((v) => !v)}
                     >
-                        {open ? <X className="h-6 w-6 text-white" /> : <Menu className="h-6 w-6 text-white" />}
+                        {open ? <X className={iconClass} /> : <Menu className={iconClass} />}
                     </button>
 
                     {/* Center: pill menu (desktop) */}
@@ -77,66 +92,66 @@ const Navbar = () => {
             "
                     >
                         <ul className="flex items-center gap-2 text-sm">
-                            {NAV_ITEMS.map((item, idx) => {
-                                const isActive = idx === activeIdx; // 'Home' active
-                                return (
-                                    <li key={item.href}>
-                                        <a
-                                            href={item.href}
-                                            className={[
+                            {NAV_ITEMS.map((item) => (
+                                <li key={item.href}>
+                                    <NavLink
+                                        to={item.href}
+                                        end={item.href === "/"}
+                                        className={({ isActive }) =>
+                                            [
                                                 "block rounded-full px-4 py-2 transition no-underline",
                                                 isActive ? "text-[#FFC34D]" : "text-white/90 hover:text-white",
-                                            ].join(" ")}
-                                        >
-                                            {item.label}
-                                        </a>
-                                    </li>
-                                );
-                            })}
+                                            ].join(" ")
+                                        }
+                                    >
+                                        {item.label}
+                                    </NavLink>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
                     {/* Right: Contact Us button */}
                     <div className="hidden lg:block">
-                        <a
-                            href="/contact"
+                        <NavLink
+                            to="/contact"
                             className="rounded-full bg-[#BD8F38] px-5 py-2.5 text-sm font-medium text-white shadow-md hover:opacity-95"
                         >
                             Contact Us
-                        </a>
+                        </NavLink>
                     </div>
                 </div>
 
-                {/* Mobile dropdown menu */}
+                {/* Mobile dropdown menu — fixed under nav on mobile */}
                 {open && (
-                    <div className="px-4 sm:px-6 pb-4 lg:hidden">
+                    <div className="absolute inset-x-0 top-full px-4 sm:px-6 pb-4 lg:hidden">
                         <div className="rounded-2xl bg-[#E6EAE9]/20 backdrop-blur-md ring-1 ring-white/10 shadow-lg">
                             <ul className="flex flex-col divide-y divide-white/10">
-                                {NAV_ITEMS.map((item, idx) => {
-                                    const isActive = idx === activeIdx;
-                                    return (
-                                        <li key={item.href}>
-                                            <a
-                                                href={item.href}
-                                                className={[
+                                {NAV_ITEMS.map((item) => (
+                                    <li key={item.href}>
+                                        <NavLink
+                                            to={item.href}
+                                            end={item.href === "/"}
+                                            className={({ isActive }) =>
+                                                [
                                                     "flex items-center justify-between px-4 py-3 transition no-underline",
                                                     isActive ? "text-[#FFC34D]" : "text-white/90 hover:text-white",
-                                                ].join(" ")}
-                                                onClick={() => setOpen(false)}
-                                            >
-                                                {item.label}
-                                            </a>
-                                        </li>
-                                    );
-                                })}
+                                                ].join(" ")
+                                            }
+                                            onClick={() => setOpen(false)}
+                                        >
+                                            {item.label}
+                                        </NavLink>
+                                    </li>
+                                ))}
                                 <li className="p-3">
-                                    <a
-                                        href="/contact"
+                                    <NavLink
+                                        to="/contact"
                                         onClick={() => setOpen(false)}
                                         className="block w-full rounded-full bg-[#BD8F38] px-5 py-2.5 text-center text-sm font-medium text-white hover:opacity-95"
                                     >
                                         Contact Us
-                                    </a>
+                                    </NavLink>
                                 </li>
                             </ul>
                         </div>
