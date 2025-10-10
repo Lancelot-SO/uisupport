@@ -81,7 +81,7 @@ export default function Partner({
     tag = "Partner With Us",
     title = "Why Choose Us As Your Staffing Partner",
     intro =
-    "At [Your Company Name], we know that the success of your facility depends on the quality of the people behind it. That's why we go beyond filling positions—we build lasting partnerships grounded in trust, reliability, and excellence. When you work with us, you gain:",
+    "At Ultimate Integrated Support Services, we know that the success of your facility depends on the quality of the people behind it. That's why we go beyond filling positions—we build lasting partnerships grounded in trust, reliability, and excellence. When you work with us, you gain:",
     reasons = [
         {
             title: "24/7 Staffing Support",
