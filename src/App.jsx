@@ -8,6 +8,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Staffing from './pages/Staffing'
 import DdaServices from './pages/DdaServices'
+import Careers from './pages/Careers'
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/staffing' element={<Staffing />} />
         <Route path='/dda-services' element={<DdaServices />} />
+        <Route path='/careers' element={<Careers />} />
       </Routes>
       <Footer />
     </BrowserRouter>
