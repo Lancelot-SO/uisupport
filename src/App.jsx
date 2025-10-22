@@ -9,6 +9,8 @@ import Contact from './pages/Contact'
 import Staffing from './pages/Staffing'
 import DdaServices from './pages/DdaServices'
 import Careers from './pages/Careers'
+import Resources from './pages/Resources'
+import ResourceDetail from './components/resources/ResourceDetail'
 
 
 
@@ -24,6 +26,8 @@ function App() {
         <Route path='/staffing' element={<Staffing />} />
         <Route path='/dda-services' element={<DdaServices />} />
         <Route path='/careers' element={<Careers />} />
+        <Route path='/resources' element={<Resources />} />
+        <Route path='/resources/:id' element={<ResourceDetail />} />
       </Routes>
       <Footer />
     </BrowserRouter>
