@@ -3,6 +3,7 @@ import React from 'react'
 import ResourceHero from '../components/resources/ResourceHero'
 import ResourceOverview from '../components/resources/ResourceOverview'
 import ResourceList from '../components/resources/ResourceList'
+import Faq from '../components/resources/Faq'
 
 const Resources = () => {
     return (
@@ -10,6 +11,7 @@ const Resources = () => {
             <ResourceHero />
             <ResourceOverview />
             <ResourceList />
+            <Faq />
         </div>
     )
 }

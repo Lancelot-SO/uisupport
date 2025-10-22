@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import ResourceHero from "./ResourceHero";
@@ -7,6 +7,11 @@ import { resourcesData } from "../../data/resourcesData";
 
 export default function ResourceDetail() {
     const { id } = useParams();
+
+    // Scroll to top whenever this component mounts or ID changes
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [id]);
 
     // Find the resource that matches the clicked ID
     const resource = resourcesData.find(
