@@ -45,7 +45,7 @@ export default function CareerOverview() {
                         className="max-w-3xl mx-auto text-gray-700 leading-relaxed"
                         variants={item}
                     >
-                        At <span className="font-semibold">[Your Company Name]</span>, exceptional
+                        At <span className="font-semibold">Ultimate Integrated Support Services Inc</span>, exceptional
                         care starts with exceptional people. We’re more than an employer — we’re a
                         compassionate, respectful, and collaborative team. Whether you’re a nurse,
                         caregiver, or support staff member, you’ll find growth opportunities, a

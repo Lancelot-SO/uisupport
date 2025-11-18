@@ -161,7 +161,7 @@ export default function MainContact() {
                             </IconWrap>
                             <div>
                                 <p className="font-semibold text-[#1C2237]">Email Address</p>
-                                <p className="text-gray-600">davidadzato45@gmail.com</p>
+                                <p className="text-gray-600">ultintegrated@gmail.com</p>
                             </div>
                         </motion.div>
 
@@ -171,7 +171,7 @@ export default function MainContact() {
                             </IconWrap>
                             <div>
                                 <p className="font-semibold text-[#1C2237]">Address</p>
-                                <p className="text-gray-600">Adringano - First Central Link. P.O Box 224</p>
+                                <p className="text-gray-600">Maryland</p>
                             </div>
                         </motion.div>
                     </div>

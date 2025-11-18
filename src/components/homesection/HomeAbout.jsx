@@ -83,7 +83,7 @@ export default function HomeAbout({ slides = DEFAULT_SLIDES }) {
                     </h2>
 
                     <p className="text-base text-slate-600 leading-7 max-w-xl">
-                        "At Ultimate Support Services, we provide staffing solutions to healthcare
+                        "At Ultimate Integrated Support Services Inc., we provide staffing solutions to healthcare
                         facilities and offer Developmental Disabilities Administration (DDA)
                         services that empower individuals to live with dignity and
                         independence. Backed by compassionate staff and a commitment to

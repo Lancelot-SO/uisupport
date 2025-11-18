@@ -158,7 +158,7 @@ export default function HomeServices() {
                                         Staffing Services
                                     </h3>
                                     <p className="mt-3 text-sm leading-relaxed text-white/90">
-                                        At Ultimate Integrated Support Services, we understand that
+                                        At Ultimate Integrated Support Services Inc, we understand that
                                         staffing challenges can place a heavy burden on healthcare
                                         facilities of every size. Unexpected absences, seasonal
                                         surges, and growing patient needs—our qualified team is ready

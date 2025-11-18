@@ -38,9 +38,9 @@ const Navbar = () => {
             <header className="h-12 bg-white/100 border-b border-neutral-100">
                 <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6">
                     <div className="flex flex-col md:flex-row items-center gap-1 md:gap-6 text-sm text-neutral-700">
-                        <a href="mailto:daviadzadto45@gmail.com" className="flex items-center gap-2 hover:opacity-80">
+                        <a href="mailto:ultintegrated@gmail.com" className="flex items-center gap-2 hover:opacity-80">
                             <Mail className="h-4 w-4 text-[#BD8F38]" />
-                            <span className="truncate">daviadzadto45@gmail.com</span>
+                            <span className="truncate">ultintegrated@gmail.com</span>
                         </a>
                         <a href="tel:+233245224993" className="flex items-center gap-2 hover:opacity-80">
                             <Phone className="h-4 w-4 text-[#BD8F38]" />

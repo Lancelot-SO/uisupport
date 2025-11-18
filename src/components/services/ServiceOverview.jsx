@@ -43,7 +43,7 @@ export default function ServiceOverview() {
                             Compassionate Disability Support
                         </h2>
                         <p className="text-gray-700 leading-relaxed mb-4">
-                            At <span className="font-semibold">Ultimate Integrated Support Services</span>,
+                            At <span className="font-semibold">Ultimate Integrated Support Services Inc</span>,
                             we believe every person deserves the opportunity to thrive in a
                             safe, caring environment. Through our Developmental Disabilities
                             Administration (DDA) programs, we provide a range of services

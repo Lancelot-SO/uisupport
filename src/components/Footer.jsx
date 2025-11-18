@@ -168,8 +168,8 @@ export default function Footer() {
                             <h3 className="text-[15px] font-extrabold tracking-wide">Contact Us</h3>
                             <ul className="mt-5 space-y-3 text-sm text-white/90">
                                 <li>(+233) 24 522 4993</li>
-                                <li>davidadzato45@gmail.com</li>
-                                <li>Adringanor First – Central Link</li>
+                                <li>ultintegrated@gmail.com</li>
+                                <li>Maryland</li>
                                 <li>P.O. BOX 224</li>
                             </ul>
                         </div>

@@ -259,7 +259,7 @@ export default function MainSection({
     tag = "Overview",
     title = "Bridging Staffing Gaps With Qualified, Compassionate Professionals",
     blurb1 =
-    "At Ultimate Integrated Support Services, we understand that staffing challenges can place a heavy burden on healthcare facilities of every size. Unexpected absences, seasonal surges, and growing patient demands can all affect the quality of care your team strives to deliver.",
+    "At Ultimate Integrated Support Services Inc, we understand that staffing challenges can place a heavy burden on healthcare facilities of every size. Unexpected absences, seasonal surges, and growing patient demands can all affect the quality of care your team strives to deliver.",
     blurb2 =
     "That’s why we provide more than just staffing—we provide peace of mind. Whether you require temporary coverage to bridge a short-term gap, long-term placements to strengthen your workforce, or last-minute emergency support, our agency is equipped to respond quickly and efficiently.",
     ctaText = "Apply Now",
