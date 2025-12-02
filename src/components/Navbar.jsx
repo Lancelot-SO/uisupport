@@ -63,7 +63,8 @@ const Navbar = () => {
             </header>
 
             {/* Main nav bar */}
-            <nav className="relative">
+            <nav className="relative backdrop-blur-md bg-[#E6EAE9]/20
+              shadow-[0_8px_24px_rgba(0,0,0,0.18)]">
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 pt-4 pb-3">
                     {/* Logo */}
                     <NavLink to="/" className="flex items-center gap-2">
@@ -104,7 +105,7 @@ const Navbar = () => {
                                         className={({ isActive }) =>
                                             [
                                                 "block rounded-full px-4 py-2 transition no-underline",
-                                                isActive ? "text-[#FFC34D]" : "text-white/90 hover:text-white",
+                                                isActive ? "text-[#FFC34D]" : "text-[#2e923a] hover:text-white",
                                             ].join(" ")
                                         }
                                     >
@@ -129,7 +130,7 @@ const Navbar = () => {
                 {/* Mobile dropdown menu — fixed under nav on mobile */}
                 {open && (
                     <div className="absolute inset-x-0 top-full px-4 sm:px-6 pb-4 lg:hidden">
-                        <div className="rounded-2xl bg-[#E6EAE9]/20 backdrop-blur-md ring-1 ring-white/10 shadow-lg">
+                        <div className="rounded-2xl bg-amber-500 backdrop-blur-md ring-1 ring-white/10 shadow-lg">
                             <ul className="flex flex-col divide-y divide-white/10">
                                 {NAV_ITEMS.map((item) => (
                                     <li key={item.href}>
@@ -139,7 +140,7 @@ const Navbar = () => {
                                             className={({ isActive }) =>
                                                 [
                                                     "flex items-center justify-between px-4 py-3 transition no-underline",
-                                                    isActive ? "text-[#FFC34D]" : "text-white/90 hover:text-white",
+                                                    isActive ? "text-[#2e923a]" : "text-white/90 hover:text-white",
                                                 ].join(" ")
                                             }
                                             onClick={() => setOpen(false)}

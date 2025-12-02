@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 // Default slides (replace with your local assets any time)
 const DEFAULT_SLIDES = [
@@ -93,8 +94,8 @@ export default function HomeAbout({ slides = DEFAULT_SLIDES }) {
 
                     {/* Primary CTA */}
                     <div className="pt-2">
-                        <button
-                            type="button"
+                        <Link
+                            to="/about"
                             className="inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-semibold text-white shadow-[0_10px_25px_rgba(0,0,0,0.15)]"
                             style={{
                                 background:
@@ -102,7 +103,7 @@ export default function HomeAbout({ slides = DEFAULT_SLIDES }) {
                             }}
                         >
                             More About Us
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Social proof card */}
