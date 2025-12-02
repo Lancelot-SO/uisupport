@@ -72,6 +72,10 @@ const Navbar = () => {
                             alt="Ultimate Integrated Support"
                             className="h-[78px] w-[80px]"
                         />
+
+                        <div>
+                            <h1 className="text-[24px] md:text-[32px] text-[#FFC34D] font-bold ">Ultimate Integrated<br /> Support Services Inc.</h1>
+                        </div>
                     </NavLink>
 
                     {/* Mobile menu button */}
