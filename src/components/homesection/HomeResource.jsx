@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 // src/components/HomeResource.jsx
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 // Swap these with your real image paths
@@ -66,15 +67,15 @@ function ResourceCard({ cover, date, title, excerpt, href = "#", reveal }) {
                     {excerpt}
                 </p>
 
-                <a
-                    href={href}
+                <Link
+                    to={href}
                     className="group mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-[#0D3B2E]"
                 >
                     <span className="tracking-wide">READ MORE</span>
                     <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#F2A900] text-[#0D3B2E] transition-transform group-hover:translate-x-1">
                         →
                     </span>
-                </a>
+                </Link>
             </div>
         </article>
     );
@@ -126,10 +127,7 @@ export default function HomeResource() {
                 {/* Cards row */}
                 <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-2">
                     <ResourceCard
-                        cover={coverA}
-                        date="15th September, 2025"
-                        title="How to Quickly Fill Staffing Gaps Without Compromising Care"
-                        excerpt={`"Our company was founded with a simple belief: that everyone deserves access to quality care and meaningful support. We recognized two growing needs....."`}
+                        href="/resources/1"
                         reveal={cards[0]}
                     />
                     <ResourceCard
@@ -137,6 +135,7 @@ export default function HomeResource() {
                         date="15th September, 2025"
                         title="Understanding the DDA Intake Process: Step by Step"
                         excerpt={`The intake process for disability support can feel overwhelming at first. We break it down into simple steps — from checking eligibility to developing a personalized support plan ...`}
+                        href="/resources/2"
                         reveal={cards[1]}
                     />
                 </div>

@@ -42,9 +42,9 @@ const Navbar = () => {
                             <Mail className="h-4 w-4 text-[#BD8F38]" />
                             <span className="truncate">ultintegrated@gmail.com</span>
                         </a>
-                        <a href="tel:+233245224993" className="flex items-center gap-2 hover:opacity-80">
+                        <a href="tel:+18568794171" className="flex items-center gap-2 hover:opacity-80">
                             <Phone className="h-4 w-4 text-[#BD8F38]" />
-                            <span>+233 24 522 4993</span>
+                            <span>+1 (856) 879-4171</span>
                         </a>
                     </div>
 

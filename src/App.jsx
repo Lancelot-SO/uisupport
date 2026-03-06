@@ -11,6 +11,7 @@ import DdaServices from './pages/DdaServices'
 import Careers from './pages/Careers'
 import Resources from './pages/Resources'
 import ResourceDetail from './components/resources/ResourceDetail'
+import BackToTop from './components/BackToTop'
 
 
 
@@ -29,6 +30,7 @@ function App() {
         <Route path='/resources' element={<Resources />} />
         <Route path='/resources/:id' element={<ResourceDetail />} />
       </Routes>
+      <BackToTop />
       <Footer />
     </BrowserRouter>
   )

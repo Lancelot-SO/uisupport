@@ -193,10 +193,10 @@ function ApplyModal({ open, onClose }) {
                                                 className="w-full appearance-none rounded-lg border border-gray-200 bg-white px-4 py-3 text-[15px] text-gray-900 shadow-sm outline-none transition focus:border-emerald-300 focus:ring-4 focus:ring-emerald-100"
                                             >
                                                 <option value="" disabled>Select type of Staff</option>
-                                                <option>Registered Nurse</option>
-                                                <option>Midwife</option>
-                                                <option>Care Assistant</option>
-                                                <option>Lab Technician</option>
+                                                <option>Registered Nurse (RN)</option>
+                                                <option>Licensed Practical Nurse (LPN)</option>
+                                                <option>Certified Nursing Assistant (CNA)</option>
+                                                <option>Certified Medication Technician (CMT)</option>
                                             </select>
                                             <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" aria-hidden>
                                                 ▼
@@ -259,7 +259,7 @@ export default function MainSection({
     tag = "Overview",
     title = "Bridging Staffing Gaps With Qualified, Compassionate Professionals",
     blurb1 =
-    "At Ultimate Integrated Support Services Inc, we understand that staffing challenges can place a heavy burden on healthcare facilities of every size. Unexpected absences, seasonal surges, and growing patient demands can all affect the quality of care your team strives to deliver.",
+    "At Ultimate Integrated Support Services Inc, we understand that staffing challenges can place a heavy burden on healthcare facilities of every size. Unexpected absences, seasonal surges, and growing patient demands can all affect the quality of care your team strives to deliver. Our network of RNs, LPNs, CNAs, and CMTs is ready to bridge these gaps.",
     blurb2 =
     "That’s why we provide more than just staffing—we provide peace of mind. Whether you require temporary coverage to bridge a short-term gap, long-term placements to strengthen your workforce, or last-minute emergency support, our agency is equipped to respond quickly and efficiently.",
     ctaText = "Apply Now",

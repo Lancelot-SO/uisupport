@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 // src/components/HomeServices.jsx
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 // Replace with your real asset paths
 import nursesMain from "../../assets/home/nurses.jpg";
@@ -160,20 +161,18 @@ export default function HomeServices() {
                                     <p className="mt-3 text-sm leading-relaxed text-white/90">
                                         At Ultimate Integrated Support Services Inc, we understand that
                                         staffing challenges can place a heavy burden on healthcare
-                                        facilities of every size. Unexpected absences, seasonal
-                                        surges, and growing patient needs—our qualified team is ready
-                                        to help.
+                                        facilities. Our qualified team, including RNs, LPNs, CNAs, and CMTs, is ready to help.
                                     </p>
 
-                                    <button
-                                        type="button"
+                                    <Link
+                                        to="/staffing"
                                         className="group mt-5 inline-flex items-center gap-2 text-[13px] font-semibold tracking-wide text-[#FFC24D]"
                                     >
                                         Learn More
                                         <span className="transition-transform group-hover:translate-x-1">
                                             →
                                         </span>
-                                    </button>
+                                    </Link>
                                 </div>
                             </article>
 
@@ -206,15 +205,15 @@ export default function HomeServices() {
                                         families to support daily living and independence.
                                     </p>
 
-                                    <button
-                                        type="button"
+                                    <Link
+                                        to="/dda-services"
                                         className="group mt-5 inline-flex items-center gap-2 text-[13px] font-semibold tracking-wide text-[#FFC24D]"
                                     >
                                         Learn More
                                         <span className="transition-transform group-hover:translate-x-1">
                                             →
                                         </span>
-                                    </button>
+                                    </Link>
                                 </div>
                             </article>
                         </div>

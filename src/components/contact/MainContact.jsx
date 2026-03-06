@@ -151,7 +151,7 @@ export default function MainContact() {
                             </IconWrap>
                             <div>
                                 <p className="font-semibold text-[#1C2237]">Phone Number</p>
-                                <p className="text-gray-600">+233 24 522 4993</p>
+                                <p className="text-gray-600">+1 (856) 879-4171</p>
                             </div>
                         </motion.div>
 
@@ -215,7 +215,7 @@ export default function MainContact() {
                                 required
                                 type="tel"
                                 name="phone"
-                                placeholder="+233 24 522 4993"
+                                placeholder="+1 (856) 879-4171"
                                 value={form.phone}
                                 onChange={onChange}
                             />

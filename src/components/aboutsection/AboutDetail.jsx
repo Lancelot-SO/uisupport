@@ -96,7 +96,7 @@ export default function AboutDetail({ onPlay }) {
                             className={`col-span-3 rounded-[24px] bg-[#B68C4A]/85 px-5 py-6 text-white shadow-lg transition-all duration-700 delay-200 ${leftC.show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                                 }`}
                         >
-                            <p className="text-[15px] font-extrabold">15 Years Experiences</p>
+                            <p className="text-[15px] font-extrabold">5 Years Experiences</p>
                             <p className="mt-2 text-[13px] leading-6 text-white/95">
                                 No matter who you are, we’re here to support you. Healthcare facilities can
                                 rely on us for qualified and compassionate staff.

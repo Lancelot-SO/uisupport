@@ -101,17 +101,17 @@ export default function Vision({
                         <div className="mt-8 space-y-6">
                             <Bullet
                                 title="Building Great Network"
-                                subtitle="Our company was founded with a simple belief"
+                                subtitle="We connect healthcare facilities with reliable professionals to ensure seamless care delivery."
                                 delay={0}
                             />
                             <Bullet
                                 title="Have Talent Resource"
-                                subtitle="Our company was founded with a simple belief"
+                                subtitle="Access a diverse pool of highly skilled and vetted healthcare talent tailored to your needs."
                                 delay={80}
                             />
                             <Bullet
                                 title="Good Interview Process"
-                                subtitle="Our company was founded with a simple belief"
+                                subtitle="Our rigorous screening ensures we only select the most qualified and compassionate candidates."
                                 delay={160}
                             />
                         </div>
@@ -128,11 +128,7 @@ export default function Vision({
                                 Mission
                             </p>
                             <p className="mt-2 text-sm leading-7 text-white/95 max-w-2xl">
-                                “Our company was founded with a simple belief: that everyone
-                                deserves access to quality care and meaningful support. We
-                                recognized two growing needs—healthcare facilities in need of
-                                dependable staff, and families seeking safe, supportive
-                                environments for loved ones…”
+                                Our mission is to bridge the gap between healthcare facilities and quality professionals, ensuring that every individual receives the compassionate and reliable support they deserve.
                             </p>
 
                             <div className="mt-4 inline-flex items-center gap-2 text-[#FFC24D] font-semibold">
