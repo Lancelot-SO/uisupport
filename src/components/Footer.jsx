@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6";
+import LegalModal from "./LegalModal"; // Import the modal
 
 // 🔁 Replace with your real asset
 import heroBg from "../assets/footerbg.png";
@@ -33,6 +34,47 @@ export default function Footer() {
     const colB = useReveal(120);
     const colC = useReveal(240);
     const colD = useReveal(360);
+
+    // Modal state
+    const [modal, setModal] = useState({ isOpen: false, title: "", content: null });
+
+    const openLegal = (title, content) => {
+        setModal({ isOpen: true, title, content });
+    };
+
+    const closeLegal = () => {
+        setModal({ ...modal, isOpen: false });
+    };
+
+    const privacyContent = (
+        <div className="space-y-4">
+            <p><strong>Last Updated: April 2026</strong></p>
+            <p>Your privacy is important to us. This Privacy Policy explains how Ultimate Integrated Support collects, uses, and protects your personal information when you use our website.</p>
+            <h4 className="text-lg font-bold text-[#0D3B2E]">1. Information Collection</h4>
+            <p>We collect information you provide directly to us through contact forms, career applications, and newsletter subscriptions. This may include your name, email address, phone number, and resume.</p>
+            <h4 className="text-lg font-bold text-[#0D3B2E]">2. Use of Information</h4>
+            <p>We use your information to provide our services, respond to inquiries, process job applications, and send updates if you have subscribed to our newsletter.</p>
+            <h4 className="text-lg font-bold text-[#0D3B2E]">3. Data Protection</h4>
+            <p>We implement a variety of security measures to maintain the safety of your personal information. We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties.</p>
+            <h4 className="text-lg font-bold text-[#0D3B2E]">4. Cookies</h4>
+            <p>Our website may use cookies to enhance user experience. You can choose to set your web browser to refuse cookies, or to alert you when cookies are being sent.</p>
+        </div>
+    );
+
+    const termsContent = (
+        <div className="space-y-4">
+            <p><strong>Last Updated: April 2026</strong></p>
+            <p>Welcome to Ultimate Integrated Support. By accessing our website, you agree to comply with and be bound by the following terms and conditions of use.</p>
+            <h4 className="text-lg font-bold text-[#0D3B2E]">1. Use of Website</h4>
+            <p>The content of the pages of this website is for your general information and use only. It is subject to change without notice.</p>
+            <h4 className="text-lg font-bold text-[#0D3B2E]">2. Disclaimer</h4>
+            <p>Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness, or suitability of the information and materials found or offered on this website.</p>
+            <h4 className="text-lg font-bold text-[#0D3B2E]">3. Intellectual Property</h4>
+            <p>This website contains material which is owned by or licensed to us. This material includes, but is not limited to, the design, layout, look, appearance, and graphics. Reproduction is prohibited.</p>
+            <h4 className="text-lg font-bold text-[#0D3B2E]">4. Governing Law</h4>
+            <p>Your use of this website and any dispute arising out of such use of the website is subject to the laws of the State of Maryland, United States.</p>
+        </div>
+    );
 
     // utility: style for nav items with active yellow text
     const navItem = ({ isActive }) =>
@@ -169,8 +211,8 @@ export default function Footer() {
                             <ul className="mt-5 space-y-3 text-sm text-white/90">
                                 <li>+1 (856) 879-4171</li>
                                 <li>ultintegrated@gmail.com</li>
-                                <li>Maryland</li>
-                                <li>P.O. BOX 224</li>
+                                <li>14502 Green view Dr. Suite # 431</li>
+                                <li>Laurel, MD 20708</li>
                             </ul>
                         </div>
 
@@ -214,12 +256,30 @@ export default function Footer() {
                     </p>
 
                     <div className="flex flex-wrap items-center gap-5">
-                        <Link to="/terms" className="hover:underline">User Terms &amp; Conditions</Link>
+                        <button
+                            onClick={() => openLegal("User Terms & Conditions", termsContent)}
+                            className="hover:underline transition-colors"
+                        >
+                            User Terms &amp; Conditions
+                        </button>
                         <span className="opacity-50">|</span>
-                        <Link to="/privacy" className="hover:underline">Privacy Policy</Link>
+                        <button
+                            onClick={() => openLegal("Privacy Policy", privacyContent)}
+                            className="hover:underline transition-colors"
+                        >
+                            Privacy Policy
+                        </button>
                     </div>
                 </div>
             </div>
+
+            {/* Legal Modal */}
+            <LegalModal
+                isOpen={modal.isOpen}
+                onClose={closeLegal}
+                title={modal.title}
+                content={modal.content}
+            />
 
             {/* keyframes for background pan */}
             <style>{`

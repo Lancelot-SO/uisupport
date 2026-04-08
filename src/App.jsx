@@ -12,6 +12,8 @@ import Careers from './pages/Careers'
 import Resources from './pages/Resources'
 import ResourceDetail from './components/resources/ResourceDetail'
 import BackToTop from './components/BackToTop'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -32,6 +34,7 @@ function App() {
       </Routes>
       <BackToTop />
       <Footer />
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
     </BrowserRouter>
   )
 }

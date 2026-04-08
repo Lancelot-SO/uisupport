@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
+import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -99,17 +101,35 @@ export default function MainContact() {
     });
     const [submitting, setSubmitting] = useState(false);
     const [sent, setSent] = useState(false);
+    const formRef = useRef();
 
     const onChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
     const onSubmit = async (e) => {
         e.preventDefault();
         setSubmitting(true);
-        // Simulated request
-        await new Promise((r) => setTimeout(r, 800));
-        setSubmitting(false);
-        setSent(true);
-        setForm({ firstName: "", lastName: "", email: "", phone: "", subject: "", message: "" });
+        
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID_CONTACT;
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_CONTACT;
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY_CONTACT;
+
+        if (!serviceId || !templateId || !publicKey) {
+            toast.error("Email configuration is missing. Please check your .env file.");
+            setSubmitting(false);
+            return;
+        }
+
+        try {
+            await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
+            toast.success("Message sent successfully!");
+            setSent(true);
+            setForm({ firstName: "", lastName: "", email: "", phone: "", subject: "", message: "" });
+        } catch (error) {
+            console.error("EmailJS Error:", error);
+            toast.error("Failed to send message. Please try again later.");
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -171,7 +191,10 @@ export default function MainContact() {
                             </IconWrap>
                             <div>
                                 <p className="font-semibold text-[#1C2237]">Address</p>
-                                <p className="text-gray-600">Maryland</p>
+                                <p className="text-gray-600">
+                                    14502 Green view Dr. Suite # 431 <br />
+                                    Laurel, MD 20708
+                                </p>
                             </div>
                         </motion.div>
                     </div>
@@ -183,13 +206,14 @@ export default function MainContact() {
                     className="relative rounded-3xl border border-amber-100 bg-amber-50 p-4 shadow-sm md:p-6 lg:p-8"
                 >
 
-                    <form onSubmit={onSubmit} className="space-y-5">
+                    <form ref={formRef} onSubmit={onSubmit} className="space-y-5">
+                        <input type="hidden" name="to_email" value={import.meta.env.VITE_EMAIL_TO_CONTACT || ""} />
                         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                             <Field
                                 label="First Name"
                                 required
                                 name="firstName"
-                                placeholder="Ex. Davida Dzato"
+                                placeholder="Enter First Name"
                                 value={form.firstName}
                                 onChange={onChange}
                             />
@@ -197,7 +221,7 @@ export default function MainContact() {
                                 label="Last Name"
                                 required
                                 name="lastName"
-                                placeholder="Ex. Davida Dzato"
+                                placeholder="Enter Last Name"
                                 value={form.lastName}
                                 onChange={onChange}
                             />
@@ -206,7 +230,7 @@ export default function MainContact() {
                                 required
                                 type="email"
                                 name="email"
-                                placeholder="Ex. Davida Dzato"
+                                placeholder="Enter Email Address"
                                 value={form.email}
                                 onChange={onChange}
                             />
@@ -225,7 +249,7 @@ export default function MainContact() {
                             label="Subject"
                             required
                             name="subject"
-                            placeholder="Ex. Davida Dzato"
+                            placeholder="Enter Subject (e.g. Service Inquiry)"
                             value={form.subject}
                             onChange={onChange}
                         />

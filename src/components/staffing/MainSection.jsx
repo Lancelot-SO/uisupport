@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PropTypes from "prop-types";
+import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
 
 import m1 from "../../assets/staffing/m1.jpg";
 import m2 from "../../assets/staffing/m2.jpg";
@@ -63,6 +65,7 @@ function CloseIcon(props) {
 
 function ApplyModal({ open, onClose }) {
     const [submitting, setSubmitting] = useState(false);
+    const formRef = useRef();
 
     useEffect(() => {
         const onKey = (e) => e.key === "Escape" && onClose();
@@ -73,9 +76,27 @@ function ApplyModal({ open, onClose }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSubmitting(true);
-        await new Promise((r) => setTimeout(r, 800)); // simulate
-        setSubmitting(false);
-        onClose();
+        
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID_STAFFING;
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_STAFFING;
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY_STAFFING;
+
+        if (!serviceId || !templateId || !publicKey) {
+            toast.error("Email configuration is missing.");
+            setSubmitting(false);
+            return;
+        }
+
+        try {
+            await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
+            toast.success("Staffing request submitted successfully!");
+            onClose();
+        } catch (error) {
+            console.error("EmailJS Error:", error);
+            toast.error("Failed to submit request.");
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -134,7 +155,8 @@ function ApplyModal({ open, onClose }) {
                         </div>
 
                         {/* Form */}
-                        <form onSubmit={handleSubmit} className="px-5 pb-5 pt-4">
+                        <form ref={formRef} onSubmit={handleSubmit} className="px-5 pb-5 pt-4">
+                            <input type="hidden" name="to_email" value={import.meta.env.VITE_EMAIL_TO_STAFFING || ""} />
                             <div className="grid grid-cols-1 gap-4">
                                 <label className="block">
                                     <span className="mb-1.5 block text-sm font-medium text-gray-800">Full Name</span>

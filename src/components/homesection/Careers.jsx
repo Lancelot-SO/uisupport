@@ -98,7 +98,39 @@ Chip.propTypes = {
 
 /* -------------------- main component -------------------- */
 
-export default function Careers({ jobs, onViewOpenings, className = "" }) {
+export default function Careers({
+    jobs = [
+        {
+            title: "Registered Nurse (RN)",
+            age: "8 days ago",
+            type: "Full Time",
+            mode: "Hybrid",
+            location: "USA-Texas",
+            blurb:
+                "Safe, welcoming residences where individuals can live in a supportive community. Each home is staffed by trained professionals ....",
+        },
+        {
+            title: "Registered Nurse (RN)",
+            age: "8 days ago",
+            type: "Full Time",
+            mode: "Hybrid",
+            location: "USA-Texas",
+            blurb:
+                "Safe, welcoming residences where individuals can live in a supportive community. Each home is staffed by trained professionals ....",
+        },
+        {
+            title: "Registered Nurse (RN)",
+            age: "8 days ago",
+            type: "Full Time",
+            mode: "Hybrid",
+            location: "USA-Texas",
+            blurb:
+                "Safe, welcoming residences where individuals can live in a supportive community. Each home is staffed by trained professionals ....",
+        },
+    ],
+    onViewOpenings = () => { },
+    className = ""
+}) {
     return (
         <section
             className={`
@@ -220,7 +252,7 @@ export default function Careers({ jobs, onViewOpenings, className = "" }) {
     );
 }
 
-/* -------------------- prop types & defaults -------------------- */
+/* -------------------- prop types -------------------- */
 
 Careers.propTypes = {
     /** Array of job cards to display */
@@ -238,38 +270,4 @@ Careers.propTypes = {
     onViewOpenings: PropTypes.func,
     /** Extra classNames for the root section */
     className: PropTypes.string,
-};
-
-Careers.defaultProps = {
-    jobs: [
-        {
-            title: "Registered Nurse (RN)",
-            age: "8 days ago",
-            type: "Full Time",
-            mode: "Hybrid",
-            location: "USA-Texas",
-            blurb:
-                "Safe, welcoming residences where individuals can live in a supportive community. Each home is staffed by trained professionals ....",
-        },
-        {
-            title: "Registered Nurse (RN)",
-            age: "8 days ago",
-            type: "Full Time",
-            mode: "Hybrid",
-            location: "USA-Texas",
-            blurb:
-                "Safe, welcoming residences where individuals can live in a supportive community. Each home is staffed by trained professionals ....",
-        },
-        {
-            title: "Registered Nurse (RN)",
-            age: "8 days ago",
-            type: "Full Time",
-            mode: "Hybrid",
-            location: "USA-Texas",
-            blurb:
-                "Safe, welcoming residences where individuals can live in a supportive community. Each home is staffed by trained professionals ....",
-        },
-    ],
-    onViewOpenings: () => { },
-    className: "",
 };

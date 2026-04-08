@@ -3,6 +3,8 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Clock, Briefcase, X, Upload } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
 
 // Utility: format “time ago”
 function timeAgo(dateString) {
@@ -20,7 +22,9 @@ export default function CareerOpening() {
     const [selectedJob, setSelectedJob] = useState(null);
     const [dragActive, setDragActive] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
+    const [submitting, setSubmitting] = useState(false);
     const fileInputRef = useRef(null);
+    const formRef = useRef(null);
 
     const handleApplyClick = (job) => {
         setSelectedJob(job);
@@ -50,6 +54,33 @@ export default function CareerOpening() {
         setDragActive(false);
         const file = e.dataTransfer.files[0];
         if (file) setSelectedFile(file);
+    };
+
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+        setSubmitting(true);
+
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID_CAREERS;
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_CAREERS;
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY_CAREERS;
+
+        if (!serviceId || !templateId || !publicKey) {
+            toast.error("Email configuration is missing.");
+            setSubmitting(false);
+            return;
+        }
+
+        try {
+            await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
+            toast.success("Application submitted successfully!");
+            setShowModal(false);
+            setSelectedFile(null);
+        } catch (error) {
+            console.error("EmailJS Error:", error);
+            toast.error("Failed to submit application.");
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     const jobs = [
@@ -92,6 +123,16 @@ export default function CareerOpening() {
             description: `CMTs are responsible for administering non-parenteral medications to residents in long-term care facilities. They ensure medication safety and follow strict administration protocols.`,
             requirements: ["CMT Certification", "Attention to detail"],
             benefits: ["Paid training", "Generous leave policy"],
+        },
+        {
+            title: "Direct Support Professionals (DSP)",
+            postedAt: "2025-10-20",
+            type: "Full Time / Part Time",
+            location: "USA-Maryland",
+            mode: "On-site",
+            description: `Direct Support Professionals (DSPs) are dedicated to supporting individuals with intellectual and developmental disabilities. You will provide assistance with daily living skills, social integration, and behavioral support, ensuring a safe and inclusive environment.`,
+            requirements: ["High School Diploma or GED", "Valid driver's license", "Compassion and patience"],
+            benefits: ["Flexible shifts", "Ongoing training", "Supportive management team"],
         },
     ];
 
@@ -278,12 +319,17 @@ export default function CareerOpening() {
                             </p>
 
                             {/* Form */}
-                            <form className="space-y-5">
+                            <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-5">
+                                {/* Hidden input for job title and recipient */}
+                                <input type="hidden" name="jobTitle" value={selectedJob?.title || ""} />
+                                <input type="hidden" name="to_email" value={import.meta.env.VITE_EMAIL_TO_CAREERS || ""} />
                                 <div>
                                     <label className="text-sm font-medium text-gray-700">Full Name</label>
                                     <input
                                         type="text"
+                                        name="fullName"
                                         placeholder="Enter name here e.g Davida Dzato"
+                                        required
                                         className="w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-[#0D3B2E] outline-none"
                                     />
                                 </div>
@@ -295,7 +341,9 @@ export default function CareerOpening() {
                                         </label>
                                         <input
                                             type="text"
+                                            name="phone"
                                             placeholder="Enter your number here"
+                                            required
                                             className="w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-[#0D3B2E] outline-none"
                                         />
                                     </div>
@@ -303,7 +351,9 @@ export default function CareerOpening() {
                                         <label className="text-sm font-medium text-gray-700">Email</label>
                                         <input
                                             type="email"
+                                            name="email"
                                             placeholder="Enter your email here"
+                                            required
                                             className="w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-[#0D3B2E] outline-none"
                                         />
                                     </div>
@@ -326,10 +376,12 @@ export default function CareerOpening() {
                                     >
                                         <input
                                             type="file"
+                                            name="resume"
                                             accept=".pdf,.doc,.docx"
                                             ref={fileInputRef}
                                             className="hidden"
                                             onChange={handleFileChange}
+                                            required
                                         />
                                         <Upload className="mx-auto text-[#B68C00]" size={28} />
                                         <p className="text-gray-700 mt-2">
@@ -348,6 +400,7 @@ export default function CareerOpening() {
                                         Cover Note <span className="text-gray-400 text-xs">(Optional)</span>
                                     </label>
                                     <textarea
+                                        name="coverNote"
                                         placeholder="Enter your cover note here"
                                         className="w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-[#0D3B2E] outline-none"
                                         rows="4"
@@ -376,9 +429,10 @@ export default function CareerOpening() {
                                     </button>
                                     <button
                                         type="submit"
-                                        className="bg-[#B68C00] text-white px-6 py-2 rounded-full text-sm hover:bg-[#a07a00]"
+                                        disabled={submitting}
+                                        className="bg-[#B68C00] text-white px-6 py-2 rounded-full text-sm hover:bg-[#a07a00] disabled:opacity-70"
                                     >
-                                        Submit Form
+                                        {submitting ? "Submitting..." : "Submit Form"}
                                     </button>
                                 </div>
                             </form>

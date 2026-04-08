@@ -127,6 +127,10 @@ export default function HomeResource() {
                 {/* Cards row */}
                 <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-2">
                     <ResourceCard
+                        cover={coverA}
+                        date="15th September, 2025"
+                        title="How to Quickly Fill Staffing Gaps Without Compromising Care"
+                        excerpt="Our company was founded with a simple belief: that everyone deserves access to quality care and meaningful support."
                         href="/resources/1"
                         reveal={cards[0]}
                     />
